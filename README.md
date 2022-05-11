@@ -1,25 +1,38 @@
-# Quarto_sample
+# Python x Visual Studio Code x Jupyterlab x Qaurto でデータ分析レポートを速攻作成
 
+## はじめに
+
+- Quartoを使ってみたらPythonでのデータ分析レポート作成がとても便利だったので紹介します。
+- 想定読者: Pythonでデータ分析をしている方、これからしようと勉強している方。
 ## Quartoとは
 
-(公式サイトから抜粋・翻訳)
+### [公式サイト](https://quarto.org/)解説(抜粋・翻訳)
 
-- [Quarto(R)](https://quarto.org/)はPandocを使って科学技術ドキュメントを生成するオープンソースのシステムです
+- QuartoはPandocを使って科学技術ドキュメントを生成するオープンソースのシステムです
 - MarkdownまたはJupyter notebookからドキュメントを生成できます
-- Python, R, Julia言語に対応
+- Python, R, Juliaに対応
 - HTML, PDF, MS Word, ePubで出力可能
 
+### Jupyterlabによるレポート作成よりも優れている点
+
+- コードが短くて済む
+- コードを隠せる
+
+詳細は後述します
 ## 準備
 
+### Visual Studio Codeのインストール
+
+- [公式サイト](https://code.visualstudio.com/download)から、"Windows8,10,11"又は"Mac"等をクリックして利用OSに対応したインストーラ/アプリケーションをダウンロードしてください。
 ### Jupyterlabをインストール
 
-Macの場合
+Macの場合 terminal.appで
 
 ```
 $ pip3 install jupyterlab
 ```
 
-Windowsの場合
+Windowsの場合 PowerShellで
 
 ```
 pip install jupyterlab
@@ -44,23 +57,26 @@ pip install jupyterlab
 
 ### Print
 コードチャンク(コードを書く場所のこと)を作り、実行すると出力されます。
-```{python}
+```python: index.qmd
 print('Hello, world!')
 ```
 Hello, world!
 
 ### 計算
 計算も可能です
-```{python}
+```python: index.qmd
 a=3
 b=5
 a+b
 ```
 8
 
+### 表
+
+
 ### グラフの描画
 グラフを埋め込むこともできます
-```{python}
+```python: index.qmd
 import numpy as np
 import plotly.graph_objects as go
 N = 30

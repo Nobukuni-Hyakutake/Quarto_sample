@@ -9,19 +9,27 @@ jupyter: python3
 - This is Quarto sample.
 - これはQuartoのサンプルです。
 
-# print
+### print
 ```{python}
 print('Hello, world!')
 ```
 
-# 計算
+### 計算
 ```{python}
 a=3
 b=5
 a+b
 ```
 
-# グラフの描画
+### 表
+```{python}
+import pandas as pd
+price_list=pd.DataFrame({"お品物":["牛丼","ラーメン"],"値段(円)":["300","400"]})
+price_list
+```
+
+
+### グラフの描画
 ```{python}
 import numpy as np
 import plotly.graph_objects as go
