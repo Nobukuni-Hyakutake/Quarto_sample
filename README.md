@@ -13,12 +13,12 @@
 - Python, R, Juliaに対応
 - HTML, PDF, MS Word, ePubで出力可能
 
-### Jupyterlabによるレポート作成よりも優れている点
+### Jupyterlabによるレポート作成(HTML出力)よりも優れている点
 
-- コードが短くて済む
-  - 今回サンプルにつきJupyterlabのipynbファイルでは1354行、Quartのqmdファイルでは50行と短くてすみますので見直しやGit管理が楽です。
-- コードを隠せる
-  - 一般の人に共有するのに向いています。
+- ソースコードが短くて済む
+  - 今回サンプルをJupyterlabのipynbファイルで作ると1354行、Quartのqmdファイルでは50行と短くてすみますので見直しや転用、Git管理が楽です。
+- 出力HTML上で、コードを隠すこともできる
+  - 一般の人にレポートを共有するのに向いています。
 
 ## 準備
 
@@ -52,7 +52,7 @@ pip install jupyterlab
 
 ### 初期設定
 
-.qmd拡張子でファイルを新規作成し冒頭に下記を入れます。
+.qmd拡張子でファイルを新規作成しVisual Studio Codeで編集します。冒頭に下記を入れます。title:のところに書いてある内容が、レポートの冒頭に大きく表示されます。
 
 ```python: index.qmd
 ---
@@ -64,11 +64,11 @@ jupyter: python3
 ---
 ```
 
-出力したレポートでcodeを隠したいときは
+出力したレポートでcodeを隠したいときは下記のようにcode-fold: trueとしてください
 
-```python
+```python: sample2.qmd
 ---
-title: "Quarto sample"
+title: "Quarto sample2"
 format:
   html:
     code-fold: true
@@ -76,8 +76,8 @@ jupyter: python3
 ---
 ```
 
-としてください。
-### マークダウン同様に書くことができます。下記はリスト記入例です。
+### リスト記入例
+通常のマークダウンと同様に書くことができます。
 ```
 - This is Quarto sample.
 - これはQuartoのサンプルです。
@@ -130,11 +130,15 @@ fig
 
 ### HTMLに出力
 
-- ファイルをqmd拡張子で保存するとVisual studio codeのQuarto拡張機能が働きます
-- 右上のRenderをクリック
-- Render HTMlをクリック
+- Visual studio codeのQuarto拡張機能を使います。
+- 右上のRenderをクリックすると、pythonコードが実行されたうえでHTMLに変換されます。完了するとVisual studio code内でプレビューが出てきます。また、ワーキングディレクトリ内に変換されたHTMLが保存されていますので、こちらからも出力結果を見ることができます。
 
-出力例。３Dグラフをドラックすると、見る角度を動かすことができます。
+- index.qmdのHTML出力例を公開しています。３Dグラフをドラックすると、見る角度を動かすことができます。
+
+
+- index.qmdと内容が同じだが、コードを隠す指示をしてHTML出力したもの。ソース：sample2.qmd,出力: sample2.htmlです。HTML上で"Code"をクリックするとコードを見ることができます。
+
+- index.qmdと内容が同じで、Jupyterlabで作りHTML出力したもの。ほぼ同じですが、セル番号が入っているのと、ページ全体のレイアウトが全幅になるなど、一部違います。
 
 出力元のqmdファイル含めソースコードはこちら
 
