@@ -16,9 +16,10 @@
 ### Jupyterlabによるレポート作成よりも優れている点
 
 - コードが短くて済む
+  - 今回サンプルにつきJupyterlabのipynbファイルでは1354行、Quartのqmdファイルでは50行と短くてすみますので見直しやGit管理が楽です。
 - コードを隠せる
+  - 一般の人に共有するのに向いています。
 
-詳細は後述します
 ## 準備
 
 ### Visual Studio Codeのインストール
@@ -47,8 +48,35 @@ pip install jupyterlab
   - "Marketplaseで拡張機能を検索する"のボックスにQuartoを入れ検索
   - 表示されたQuarto をインストールしてください
 
-## 使用例
+## 作成例
 
+### 初期設定
+
+.qmd拡張子でファイルを新規作成し冒頭に下記を入れます。
+
+```python: index.qmd
+---
+title: "Quarto sample"
+format:
+  html:
+    code-fold: false
+jupyter: python3
+---
+```
+
+出力したレポートでcodeを隠したいときは
+
+```python
+---
+title: "Quarto sample"
+format:
+  html:
+    code-fold: true
+jupyter: python3
+---
+```
+
+としてください。
 ### マークダウン同様に書くことができます。下記はリスト記入例です。
 ```
 - This is Quarto sample.
@@ -73,6 +101,11 @@ a+b
 
 ### 表
 
+```python: index.qmd
+import pandas as pd
+price_list=pd.DataFrame({"お品物":["牛丼","ラーメン"],"値段(円)":["300","400"]})
+price_list
+```
 
 ### グラフの描画
 グラフを埋め込むこともできます
