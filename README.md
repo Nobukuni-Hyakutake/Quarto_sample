@@ -1,9 +1,10 @@
-# Python x Visual Studio Code x Jupyterlab x Qaurto でデータ分析レポートを速攻作成
+# Python, Visual Studio Code, Jupyterlab, Qaurto でデータ分析レポートを速攻作成
 
 ## はじめに
 
 - Quartoを使ってみたらPythonでのデータ分析レポート作成がとても便利だったので紹介します。
-- 想定読者: Pythonでデータ分析をしている方、これからしようと勉強している方。
+- 想定読者: Pythonでデータ分析をしている方、これから始めようとしている方。(Pythonおよびマークダウンを書いたことがあると想定します)
+- なおR Markdown+RStudioと非常に似ていますが、R/RStudioをインストールしなくても使える点が便利です。
 ## Quartoとは
 
 ### [公式サイト](https://quarto.org/)解説(抜粋・翻訳)
@@ -18,9 +19,13 @@
 - ソースコードが短くて済む
   - 今回サンプルをJupyterlabのipynbファイルで作ると1354行、Quartのqmdファイルでは50行と短くてすみますので見直しや転用、Git管理が楽です。
 - 出力HTML上で、コードを隠すこともできる
-  - 一般の人にレポートを共有するのに向いています。
+  - 一般の人にレポートを共有するのに向いています。方法は後述します。
 
-## 準備
+## Quarto環境の準備
+
+### Pythonのインストール
+
+省略します
 
 ### Visual Studio Codeのインストール
 
@@ -44,9 +49,9 @@ pip install jupyterlab
  - ダウンロードされたファイルを使ってインストールしてください
 
 ### Visual studio codeの拡張機能をインストール
-  - 拡張機能をクリック
+  - Visual studio codeを開き、左側の拡張機能アイコンをクリック
   - "Marketplaseで拡張機能を検索する"のボックスにQuartoを入れ検索
-  - 表示されたQuarto をインストールしてください
+  - 表示されたQuarto をインストール
 
 ## 作成例
 
@@ -101,6 +106,8 @@ a+b
 
 ### 表
 
+表を埋め込むこともできます
+
 ```python: index.qmd
 import pandas as pd
 price_list=pd.DataFrame({"お品物":["牛丼","ラーメン"],"値段(円)":["300","400"]})
@@ -108,7 +115,9 @@ price_list
 ```
 
 ### グラフの描画
+
 グラフを埋め込むこともできます
+
 ```python: index.qmd
 import numpy as np
 import plotly.graph_objects as go
@@ -130,21 +139,30 @@ fig
 
 ### HTMLに出力
 
+上記で作った.qmdファイルをもとに、HTMLに出力します。
+#### 手順
+
 - Visual studio codeのQuarto拡張機能を使います。
-- 右上のRenderをクリックすると、pythonコードが実行されたうえでHTMLに変換されます。完了するとVisual studio code内でプレビューが出てきます。また、ワーキングディレクトリ内に変換されたHTMLが保存されていますので、こちらからも出力結果を見ることができます。
+- .qmdファイルを開いた状態で、右上のRenderをクリックすると、pythonコードが実行されたうえでHTMLに変換されます。
+- 完了するとVisual studio code内でプレビューが出てきます。
+- ワーキングディレクトリ内に変換されたHTMLが保存されますので、そちらからも出力結果を見ることができます。
 
-- index.qmdのHTML出力例を公開しています。３Dグラフをドラックすると、見る角度を動かすことができます。
+#### 事例
 
+#### HTML出力例
+
+- 本記事で解説したindex.qmdのHTML出力例を公開しています。
+  
+https://nobukuni-hyakutake.github.io/Quarto_sample/index.html
 
 - index.qmdと内容が同じだが、コードを隠す指示をしてHTML出力したもの。ソース：sample2.qmd,出力: sample2.htmlです。HTML上で"Code"をクリックするとコードを見ることができます。
+  
+https://nobukuni-hyakutake.github.io/Quarto_sample/sample2.html
 
-- index.qmdと内容が同じで、Jupyterlabで作りHTML出力したもの。ほぼ同じですが、セル番号が入っているのと、ページ全体のレイアウトが全幅になるなど、一部違います。
+- index.qmdと内容が同じで、Jupyterlabで作りHTML出力したもの。ソース: jupyterlab_sample.ipynb、出力：jupyterlab_sample.html。Quartoで作成したものと比べてセル番号が入っているのと、ページ全体のレイアウトが全幅になるなど、一部が違います。
+  
+https://nobukuni-hyakutake.github.io/Quarto_sample/jupyterlab_sample.html
 
-出力元のqmdファイル含めソースコードはこちら
+#### 全ソースコードおよび出力結果
 
-### 参考サイト
-
-- [Pandocユーザーガイド](https://pandoc-doc-ja.readthedocs.io/ja/latest/users-guide.html)
-  - Markdown書式の解説などがあります
-- [R Markdownによるレポート生成](https://qiita.com/tomotagwork/items/c92fb40a76f56ea16aa4)
-  - R Markdown(R言語+Markdown)はQuartoとは別物ですが、とても似ているので書き方・活用の仕方の参考になると思います。特に現時点では、日本語のQuartoの解説記事が少ないので。
+https://github.com/Nobukuni-Hyakutake/Quarto_sample
